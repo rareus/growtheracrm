@@ -23,20 +23,20 @@ welcomeRoutes.post("/api/welcome", async (req, res) => {
 
     const mailOptions = {
       to: `${email}`,
-      from: "no-reply@enego.co.in",
-      subject: `Warm Welcome to ${name}  from ENEGO GROUP OF COMPANIES
+      from: "no-reply@growtheraventures.com",
+      subject: `Warm Welcome to ${name}  from Growthera Ventures Private Limited
 `,
       html: `
         <p>Dear Sir/Madam,</p>
 
         <p>
           We are pleased to extend a warm welcome to <b>${name}</b> as a valued client of 
-          <b>ENEGO GROUP OF COMPANIES</b>. We sincerely appreciate the trust you’ve placed in us and are 
+          <b>Growthera Ventures Private Limited</b>. We sincerely appreciate the trust you’ve placed in us and are 
           excited about the opportunity to collaborate and contribute to your success.
         </p>
 
         <p>
-          At <b>ENEGO GROUP OF COMPANIES</b>, we are dedicated to offering high-quality, tailored services 
+          At <b>Growthera Ventures Private Limited</b>, we are dedicated to offering high-quality, tailored services 
           designed to meet the unique needs of <b>${name}</b>. Our experienced team is committed to providing 
           expert support and guidance at every stage of our partnership to ensure a smooth and successful experience.
         </p>
@@ -49,7 +49,7 @@ welcomeRoutes.post("/api/welcome", async (req, res) => {
         </p>
 
         <p>
-          Thank you once again for choosing <b>ENEGO GROUP OF COMPANIES</b>. We look forward to a successful 
+          Thank you once again for choosing <b>Growthera Ventures Private Limited</b>. We look forward to a successful 
           and fruitful collaboration, and to helping <b>${name}</b> achieve its business objectives.
         </p>
 
@@ -62,8 +62,8 @@ welcomeRoutes.post("/api/welcome", async (req, res) => {
         </p>
 
         <p>Warm regards,</p>
-        <p><b>ENEGO GROUP OF COMPANIES</b></p>
-        <p><a href="https://enego.co.in">enego.co.in</a></p>
+        <p><b>Growthera Ventures Private Limited</b></p>
+        <p><a href="https://growtheraventures.com">Growthera Ventures</a></p>
       `,
     };
 
