@@ -16,7 +16,7 @@ const employeeProfileSchema = mongoose.Schema(
     branch: { 
       type: String, 
       required: true,
-      enum: ["Main Branch"]
+      enum: ["1206", "808", "1512", "Admin", "Digital", "407 AMD", "408 AMD", "906"]
     },
     gender: { 
       type: String, 
@@ -128,11 +128,11 @@ employeeProfileSchema.pre('save', async function(next) {
     try {
       // Generate employee ID based on department and sequence
       const deptCode = {
-        'Sales': 'S',
-        'Digital': 'D',
-        'Operations': 'O',
-        'Legal': 'L',
-        'Finance': 'F'
+        'Sales': 'SL',
+        'Digital': 'DG',
+        'Admin': 'AD',
+        'Legal': 'LG',
+        'Finance': 'FN'
       };
       
       const prefix = deptCode[this.department] || 'EMP';
