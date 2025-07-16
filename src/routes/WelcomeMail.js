@@ -54,7 +54,7 @@ welcomeRoutes.post("/api/welcome", async (req, res) => {
         </p>
 
         <p>
-          For any queries kindly mail us at <a href="mailto:support@enego.co.in">support@enego.co.in</a>
+          For any queries kindly mail us at <a href="mailto:support@growtheraventures.com">support@growtheraventures.com</a>
         </p>
 
         <p style="color: #555; font-size: 14px; margin-top: 20px;">
@@ -63,7 +63,7 @@ welcomeRoutes.post("/api/welcome", async (req, res) => {
 
         <p>Warm regards,</p>
         <p><b>Growthera Ventures Private Limited</b></p>
-        <p><a href="https://growtheraventures.com">Growthera Ventures</a></p>
+        <p><a href="https://growtheraventures.com">Growtheraventures.com</a></p>
       `,
     };
 
