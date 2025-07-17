@@ -1,31 +1,45 @@
 import express from "express";
 import nodemailer from "nodemailer";
-import dotenv from 'dotenv'
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 
-const mailUser=process.env.MAIL_USER
-const mailPass=process.env.MAIL_PASS
+const mailUser = process.env.MAIL_USER; // no-reply@growtheraventures.com
+const mailPass = process.env.MAIL_PASS;
 
 const welcomeRoutes = express.Router();
 
 welcomeRoutes.post("/api/welcome", async (req, res) => {
   const { email, name, amount } = req.body;
+
+  // Basic validation
+  if (!email || !name) {
+    return res.status(400).json({ message: "Missing required fields." });
+  }
+
   try {
     const transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
       port: 465,
-      secure: true, // true for port 465, false for other ports
+      secure: true,
       auth: {
-        user: `${mailUser}`,
-        pass: `${mailPass}`,
+        user: mailUser,
+        pass: mailPass,
       },
     });
 
+    // Optional: Verify SMTP connection
+    transporter.verify((error, success) => {
+      if (error) {
+        console.error("SMTP verification failed:", error);
+      } else {
+        console.log("SMTP connected successfully.");
+      }
+    });
+
     const mailOptions = {
-      to: `${email}`,
-      from: "no-reply@growtheraventures.com",
-      subject: `Warm Welcome to ${name}  from Growthera Ventures Private Limited
-`,
+      from: mailUser, // ✅ authenticated sender
+      to: email, // recipient (user)
+      subject: `Warm Welcome to ${name} from Growthera Ventures Private Limited`,
       html: `
         <p>Dear Sir/Madam,</p>
 
@@ -67,10 +81,12 @@ welcomeRoutes.post("/api/welcome", async (req, res) => {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully:", info.messageId);
 
     res.status(200).json({ message: "Welcome Mail Sent Successfully." });
   } catch (error) {
+    console.error("Error sending mail:", error);
     res.status(500).json({ message: "Server error.", error: error.message });
   }
 });
